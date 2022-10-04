@@ -9,9 +9,13 @@ Includes:
 """
 
 from typing import Dict, Tuple
+
 from search_algorithms import *
 from array_generator import *
 import time
+import seaborn
+import pandas as pd
+import matplotlib.pyplot as plt
 
 TEST_SIZE = [1000, 2000, 4000, 8000, 16000]
 
@@ -110,7 +114,42 @@ if __name__ == '__main__':
     print("No exception arise, suggesting our search function are working well")
     print("=============================================")
     print("Now Running Experiment 1")
-    print("Raw data from experiment 1:", experiment_1())
+    ex1 = experiment_1()
+    print("Raw data from experiment 1:", ex1)
     print("=============================================")
     print("Now Running Experiment 2")
-    print("Raw data from experiment 2:", experiment_2())
+    ex2 = experiment_2()
+    print("Raw data from experiment 2:", ex2)
+
+    plot_data = []
+    for i in TEST_SIZE:
+        plot_data.append({
+            "size": i,
+            "Algorithm": "binary search",
+            "Does value exists": True,
+            "time": ex1[i][0]
+        })
+        plot_data.append({
+            "size": i,
+            "Algorithm": "trinary search",
+            "Does value exists": True,
+            "time": ex1[i][1]
+        })
+        plot_data.append({
+            "size": i,
+            "Algorithm": "binary search",
+            "Does value exists": False,
+            "time": ex2[i][0]
+        })
+        plot_data.append({
+            "size": i,
+            "Algorithm": "trinary search",
+            "Does value exists": False,
+            "time": ex2[i][1]
+        })
+    # An example of plotting with pandas seaborn and matplotlib
+    df = pd.DataFrame(plot_data)
+    plt.style.use('ggplot')
+    import matplotlib
+    seaborn.lineplot(x="size", y="time", hue="Algorithm", style="Does value exists", data=df)
+    plt.show()
