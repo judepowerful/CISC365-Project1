@@ -1,5 +1,15 @@
+"""The array generator used by Project 1
+
+Includes:
+    array_generator: The function to generate an array for the experiment.
+    bubble_sort: An implementation of bubble sort, for the preliminary concept testing.
+    merge_sort: An implementation of merge sort, for the sake of speed.
+    merge: The merge function used by merge_sort.
+"""
+
 import random
 from typing import Literal, Optional
+
 
 def array_generator(n: int, req: Optional[Literal["even", "odd"]] = None, doSort: bool = True) -> list[int]:
     """Generates an array of length n.

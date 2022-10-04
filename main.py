@@ -1,3 +1,10 @@
+"""The experiment running entrypoint
+
+Includes:
+    experiment_1: Running Experiment 1
+    experiment_2: Running Experiment 2
+"""
+
 from typing import Dict, Tuple
 from search_algorithms import *
 from array_generator import *
@@ -40,6 +47,7 @@ def experiment_1() -> Dict[int, Tuple[int, int]]:
               f"is quicker, with {abs(bin_delta - trin_delta) / 1e9:0.4f}s")
     return results
 
+
 def experiment_2() -> Dict[int, Tuple[int, int]]:
     """Do experiment 2, return the result for plotting.
 
@@ -73,6 +81,7 @@ def experiment_2() -> Dict[int, Tuple[int, int]]:
               f"{'binary search' if bin_delta < trin_delta else 'trinary search'}",
               f"is quicker, with {abs(bin_delta - trin_delta) / 1e9:0.4f}s")
     return results
+
 
 if __name__ == '__main__':
     print("start testing for search functions")
