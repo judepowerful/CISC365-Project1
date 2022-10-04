@@ -75,6 +75,17 @@ def experiment_2() -> Dict[int, Tuple[int, int]]:
     return results
 
 if __name__ == '__main__':
+    print("start testing for search functions")
+    test_array = [0, 2, 12, 13, 16, 28, 30, 32, 36,
+                  37, 37, 38, 47, 47, 48, 55, 75, 75, 78, 79]
+    for num in test_array:
+        assert test_array[bin_search(test_array, num)] == num
+        assert test_array[trin_search(test_array, num)] == num
+    not_existing = [-5, -1, 1, 40, 60, 80, 10000]
+    for num in not_existing:
+        assert bin_search(test_array, num) == -1
+        assert trin_search(test_array, num) == -1
+    print("No exception arise, suggesting our search function are working well")
     print("=============================================")
     print("Now Running Experiment 1")
     print("Raw data from experiment 1:", experiment_1())
