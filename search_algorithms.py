@@ -1,5 +1,8 @@
 """The search algorithms used by Project 1, modified for the sake of convenience
 
+Author:
+    Yu Peng(Code), Somion Tian(Comments)
+
 Includes:
     trin_search: Trinary search algorithm implementation
     bin_search:  Binary search algorithm implementation
@@ -10,6 +13,9 @@ from typing import Any, Optional
 
 def trin_search(A: list, target: Any, first: Optional[int] = None, last: Optional[int] = None) -> int:
     """Divide list A into three parts and search for target recursively.
+
+    Author:
+        Yu Peng
 
     Args:
         A (list):     The list to search with.
@@ -56,6 +62,9 @@ def trin_search(A: list, target: Any, first: Optional[int] = None, last: Optiona
 
 def bin_search(A: list, target: Any, first: Optional[int] = None, last: Optional[int] = None) -> int:
     """Use binary search to search for target recursively.
+
+    Author:
+        Yu Peng
 
     Args:
         A (list):     The list to search with.

@@ -1,5 +1,8 @@
 """The experiment running entrypoint
 
+Author:
+    Yu Peng, Somion Tian
+
 Includes:
     experiment_1: Running Experiment 1
     experiment_2: Running Experiment 2
@@ -15,6 +18,9 @@ TEST_SIZE = [1000, 2000, 4000, 8000, 16000]
 
 def experiment_1() -> Dict[int, Tuple[int, int]]:
     """Do experiment 1, return the result for plotting.
+
+    Author:
+        Somion Tian
 
     Returns:
         A dictionary, with keys the test size n, and values tuple with (timing of bin, timing of trin).
@@ -51,6 +57,9 @@ def experiment_1() -> Dict[int, Tuple[int, int]]:
 def experiment_2() -> Dict[int, Tuple[int, int]]:
     """Do experiment 2, return the result for plotting.
 
+    Author:
+        Somion Tian
+
     Returns:
         A dictionary, with keys the test size n, and values tuple with (timing of bin, timing of trin).
         The unit of data are in nanoseconds
@@ -84,6 +93,10 @@ def experiment_2() -> Dict[int, Tuple[int, int]]:
 
 
 if __name__ == '__main__':
+    """
+    Author:
+        Yu Peng, Somion Tian
+    """
     print("start testing for search functions")
     test_array = [0, 2, 12, 13, 16, 28, 30, 32, 36,
                   37, 37, 38, 47, 47, 48, 55, 75, 75, 78, 79]

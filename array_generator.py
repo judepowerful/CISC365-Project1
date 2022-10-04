@@ -1,5 +1,8 @@
 """The array generator used by Project 1
 
+Author:
+    Yu Peng, Somion Tian
+
 Includes:
     array_generator: The function to generate an array for the experiment.
     bubble_sort: An implementation of bubble sort, for the preliminary concept testing.
@@ -13,6 +16,9 @@ from typing import Literal, Optional
 
 def array_generator(n: int, req: Optional[Literal["even", "odd"]] = None, doSort: bool = True) -> list[int]:
     """Generates an array of length n.
+
+    Author:
+        Yu Peng, Somion Tian
 
     Args:
         n (int): The size of array needed.
@@ -42,6 +48,9 @@ def array_generator(n: int, req: Optional[Literal["even", "odd"]] = None, doSort
 def bubble_sort(array: list[int]):
     """Bubble Sort loop implementation. Sorting array in ascending order.
 
+    Author:
+        Yu Peng
+
     Args:
         array (list of int): The list to sort with.
     """
@@ -55,6 +64,9 @@ def bubble_sort(array: list[int]):
 
 def merge_sort(array: list[int], first: Optional[int] = None, last: Optional[int] = None):
     """Merge Sort recursive implementation. Sorting array in ascending order.
+
+    Author:
+        Somion Tian
 
     Args:
         array (list of int): The list to sort with.
@@ -81,6 +93,9 @@ def merge_sort(array: list[int], first: Optional[int] = None, last: Optional[int
 def merge(array: list[int], first: int, mid: int, last: int):
     """Merge the array[first:mid] and array[mid+1:last] with ascending order
 
+    Author:
+        Somion Tian
+
     Args:
         array (list of int): The list to merge with. Assuming array[first:mid] and array[mid+1:last] are already sorted.
         first (int):  Index of the start of merge interval.
@@ -101,14 +116,14 @@ def merge(array: list[int], first: int, mid: int, last: int):
 
     # Make sure every element are appended.
     # Notice that former loop guarantees that one of left or right sub-array must be exhausted.
-    # So we will only execute one of following while loop.
+    # So we will only execute one of following while loops.
     while i < mid:
         temp.append(array[i])
         i += 1
     while j < last:
         temp.append(array[j])
         j += 1
-    assert(len(temp) == last - first)
+    assert len(temp) == last - first
 
     # Copy the elements from temp to array
     for i in range(len(temp)):
