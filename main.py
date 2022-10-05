@@ -13,9 +13,6 @@ from typing import Dict, Tuple
 from search_algorithms import *
 from array_generator import *
 import time
-import seaborn
-import pandas as pd
-import matplotlib.pyplot as plt
 
 TEST_SIZE = [1000, 2000, 4000, 8000, 16000]
 
@@ -32,7 +29,9 @@ def experiment_1() -> Dict[int, Tuple[int, int]]:
     """
     results: Dict[int, Tuple[int, int]] = {}
     for n in TEST_SIZE:
+        # random array for search
         random_array = array_generator(n)
+        # search values
         test_set = random_array * 10
 
         # Use perf_counter_ns for better timing accuracy
@@ -50,11 +49,17 @@ def experiment_1() -> Dict[int, Tuple[int, int]]:
 
         results[n] = (bin_delta, trin_delta)
 
+        # results
+        bin_search_run_time = bin_delta / 1e9
+        tri_search_run_time = trin_delta / 1e9
+        difference = abs(bin_delta - trin_delta) / 1e9
+        difference_percent = difference / ((bin_search_run_time + tri_search_run_time) / 2) * 100
+
         print(f"Array size: {n},",
-              f"binary search running time: {bin_delta / 1e9:0.4f}s,",
-              f"trinary search running time: {trin_delta / 1e9:0.4f}s,",
+              f"binary search running time: {bin_search_run_time:0.4f}s,",
+              f"trinary search running time: {tri_search_run_time:0.4f}s,",
               f"{'binary search' if bin_delta < trin_delta else 'trinary search'}",
-              f"is quicker, with {abs(bin_delta - trin_delta) / 1e9:0.4f}s")
+              f"is quicker, with {difference:0.4f}s, which is {difference_percent:0.4f} %")
     return results
 
 
@@ -88,11 +93,17 @@ def experiment_2() -> Dict[int, Tuple[int, int]]:
 
         results[n] = (bin_delta, trin_delta)
 
+        # results
+        bin_search_run_time = bin_delta / 1e9
+        tri_search_run_time = trin_delta / 1e9
+        difference = abs(bin_delta - trin_delta) / 1e9
+        difference_percent = difference / ((bin_search_run_time + tri_search_run_time) / 2) * 100
+
         print(f"Array size: {n},",
-              f"binary search running time: {bin_delta / 1e9:0.4f}s,",
-              f"trinary search running time: {trin_delta / 1e9:0.4f}s,",
+              f"binary search running time: {bin_search_run_time:0.4f}s,",
+              f"trinary search running time: {tri_search_run_time:0.4f}s,",
               f"{'binary search' if bin_delta < trin_delta else 'trinary search'}",
-              f"is quicker, with {abs(bin_delta - trin_delta) / 1e9:0.4f}s")
+              f"is quicker, with {difference:0.4f}s, which is {difference_percent:0.4f} %")
     return results
 
 
@@ -120,36 +131,3 @@ if __name__ == '__main__':
     print("Now Running Experiment 2")
     ex2 = experiment_2()
     print("Raw data from experiment 2:", ex2)
-
-    plot_data = []
-    for i in TEST_SIZE:
-        plot_data.append({
-            "size": i,
-            "Algorithm": "binary search",
-            "Does value exists": True,
-            "time": ex1[i][0]
-        })
-        plot_data.append({
-            "size": i,
-            "Algorithm": "trinary search",
-            "Does value exists": True,
-            "time": ex1[i][1]
-        })
-        plot_data.append({
-            "size": i,
-            "Algorithm": "binary search",
-            "Does value exists": False,
-            "time": ex2[i][0]
-        })
-        plot_data.append({
-            "size": i,
-            "Algorithm": "trinary search",
-            "Does value exists": False,
-            "time": ex2[i][1]
-        })
-    # An example of plotting with pandas seaborn and matplotlib
-    df = pd.DataFrame(plot_data)
-    plt.style.use('ggplot')
-    import matplotlib
-    seaborn.lineplot(x="size", y="time", hue="Algorithm", style="Does value exists", data=df)
-    plt.show()
