@@ -15,8 +15,6 @@ The generated array is then sorted ascending with merge sort algorithm.
 ## Question 1: 
 ### Binary search and trinary search both fall into the O(log n) complexity class. Do your experiments show growth in execution time that is consistent with this?
 
-O(log n) complexity indicates that time will increase linearly as n increases exponentially. With the values given in the experiments they appear to increase by the previous n being multiplied by 2 (n= 1000, n = 2000, n = 4000, n = 8000, n = 16000). With n values like this we would not observe time increasing linearly as n increases exponentially, however if we had say n = 1000000 we would be able to see that compared to n = 1000 time would increase linearly as the increase from 1000 to 1000000 is exponential (n^2).
-
 ## Question 2:
 ### Compare the total time for the two search algorithms:
 ### - Do they ever differ by more than 10%, or are they always within 10% of eachother?
